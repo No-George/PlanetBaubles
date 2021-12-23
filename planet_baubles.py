@@ -10,14 +10,14 @@ latitude, longitude = '51.4545', '2.5879'
 
 #Choose planet colours - defaults are jazzier than real life. 
 #ref https://www.schemecolor.com/venus-planet-colors.php
-mercury = { "name":"mercury", "RGB":[(231,232,236),(104,105,109)], "orbit":ephem.Mercury(), "twinkliness":500000, "next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None}
-venus = { "name":"venus", "RGB":[(139, 145, 161),(187, 183, 171),(221, 216, 212),(239, 239, 239)], "orbit":ephem.Venus(), "twinkliness":7000000,"next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None}
-earth = { "name":"the sun", "RGB":[(0,169,95),(0,50,220)], "orbit":ephem.Sun(), "twinkliness":1000000,"next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None} #value for sun used to indicate if it is light or dark
-mars = { "name":"mars", "RGB":[(123,38,14),(173,56,0)], "orbit":ephem.Mars(), "twinkliness":1200000,"next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None}
-jupiter = { "name":"jupiter", "RGB":[(201,144,57),(227,220,203)], "orbit":ephem.Jupiter(), "twinkliness":1400000,"next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None}
-saturn = { "name":"saturn", "RGB":[(234,214,184),(206,206,106)], "orbit":ephem.Saturn(), "twinkliness":1600000,"next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None}
-uranus = { "name":"uranus", "RGB":[(75,238,88),(67,201,130)], "orbit":ephem.Uranus(), "twinkliness":2000000,"next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None}
-neptune = { "name":"neptune", "RGB":[(91,93,223),(113,173,219)], "orbit":ephem.Neptune(), "twinkliness":2200000,"next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None}
+mercury = { "name":"mercury", "RGB":[(231,232,236),(104,105,109)], "orbit":ephem.Mercury(), "twinkliness":1000000, "next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None}
+venus = { "name":"venus", "RGB":[(139, 145, 161),(187, 183, 171),(221, 216, 212),(239, 239, 239)], "orbit":ephem.Venus(), "twinkliness":130000,"next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None}
+earth = { "name":"the sun", "RGB":[(0,169,95),(0,50,220)], "orbit":ephem.Sun(), "twinkliness":1500000,"next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None} #value for sun used to indicate if it is light or dark
+mars = { "name":"mars", "RGB":[(123,38,14),(173,56,0)], "orbit":ephem.Mars(), "twinkliness":1600000,"next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None}
+jupiter = { "name":"jupiter", "RGB":[(201,144,57),(227,220,203)], "orbit":ephem.Jupiter(), "twinkliness":1700000,"next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None}
+saturn = { "name":"saturn", "RGB":[(234,214,184),(206,206,106)], "orbit":ephem.Saturn(), "twinkliness":1800000,"next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None}
+uranus = { "name":"uranus", "RGB":[(75,238,88),(67,201,130)], "orbit":ephem.Uranus(), "twinkliness":1900000,"next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None}
+neptune = { "name":"neptune", "RGB":[(91,93,223),(113,173,219),(40,40,250)], "orbit":ephem.Neptune(), "twinkliness":2000000,"next_rise_time":0, "previous_rise_time":0, "next_set_time":0, "previous_set_time":0, "constellation": None, "visibility": None}
 planets = [mercury, venus, earth, mars,jupiter,saturn,uranus,neptune]
 
 
@@ -58,7 +58,7 @@ def wheel_disco(pos):
         b = int(255 - pos * 3)
     return (r, g, b) if ORDER in (neopixel.RGB, neopixel.GRB) else (r, g, b, 0)
 
-def wheel_dev(pos):
+def wheel_day(pos):
     if (pos%25)%5 == 1:     
         r = 200
         g = 200
@@ -79,8 +79,7 @@ def sun_cycle(enthusiasm):
         rotation = int(time.time()*(5))%sun_pixels
         for i in range(sun_pixels):        
             pixel_index = ((i +rotation) % sun_pixels)
-            pixels[i] = wheel_dev(pixel_index)
-
+            pixels[i] = wheel_day(pixel_index)
 
 def planet_cycle():
         #calculate planet RGB values and flash if they're visible
