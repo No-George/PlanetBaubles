@@ -6,7 +6,7 @@ It complements these 3D printed parts over on thingiverse: [3D parts](https://ww
 Place a neopixel in each planet/bauble and it will subtly twinkle with the natural colours of that planet. 
 
 ## Setup
-Enter your coordinates into the code and it will flash the planets whne they're overhead.
+Enter your coordinates into the code and it will flash the planets when they're overhead.
 During the day, the sun will be generally yellow. At night it will have a disco.
 
 For minimal setup, place the files on the desktop of a pi zero and install python dependencies. 
